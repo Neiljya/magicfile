@@ -118,12 +118,12 @@ class FileSorterApp(tk.Tk):
             messagebox.showerror("Error", "Load a directory first!")
             return
 
-            # Only use explicitly set limits; ignore all other files.
+        # Only uses limits if entered; ignore all other files.
         if not self.filetype_limits:
             messagebox.showinfo("Info", "No file type limits are set. No files will be sorted.")
             return
 
-            # Call the sorting function with the determined limits
+        # Call the sorting function with specified limits, if any
         magicfile.sort_files(self.directory, self.filetype_limits)
         messagebox.showinfo("Success", "Files have been sorted.")
         self.update_file_list()
