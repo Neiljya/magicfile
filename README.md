@@ -6,6 +6,8 @@
 
 Magtic File is a simple tool designed to make organizing/refactoring files slightly more convenient
 
+
+
 ![ui](https://github.com/Neiljya/magicfile/assets/140043024/e8ce7ed0-2cba-4db2-979f-5e42ee5d1fab)
 
 
