@@ -1,3 +1,7 @@
+
+![1](https://github.com/Neiljya/magicfile/assets/140043024/e9d3ed46-14f2-4180-b80d-2a0d8494c60c)
+
+
 # Magic File
 
 Magtic File is a simple tool designed to make organizing/refactoring files slightly more convenient
