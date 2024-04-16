@@ -20,15 +20,15 @@ Magtic File is a simple tool designed to make organizing/refactoring files sligh
 **Load a Directory**
 Click on 'Load Directory' button to select a directory. Once loaded the files will be displayed in the list box
 
-**Set Limits for Sorting** (albeit a bit buggy)
-Click on 'Set Limits' to specify sorting limits for specific file types. You can also set a default limit for all file types that
-don't have a specific limit
+    - **Set Limits for Sorting** (albeit a bit buggy)
+    Click on 'Set Limits' to specify sorting limits for specific file types. You can also set a default limit for all file types that
+    don't have a specific limit
 
-**Rename Files**
-Click on 'Rename Files' to rename the files using a custom name or default which is based on the file creation date.
+    - **Rename Files**
+    Click on 'Rename Files' to rename the files using a custom name or default which is based on the file creation date.
 
-**Change File Type**
-Click on 'Change File Type' to change the file extensions within the loaded directory.
+    - **Change File Type**
+    Click on 'Change File Type' to change the file extensions within the loaded directory.
 
 
 ![ui](https://github.com/Neiljya/magicfile/assets/140043024/e8ce7ed0-2cba-4db2-979f-5e42ee5d1fab)
