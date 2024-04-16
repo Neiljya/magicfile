@@ -43,18 +43,20 @@ def get_file_type(parent_directory, files_dict):
 
 
 def sort_files(parent_directory, filetype_limits):
-    # Iterate only over specified file types in the limits
+    
+    # Loop only through the specified filetype
     for filetype, limit in filetype_limits.items():
         target_dir = os.path.join(parent_directory, filetype)
         if not os.path.exists(target_dir):
             os.makedirs(target_dir)
 
-        # Count how many files we've moved to respect the limit
+        # Counter to store the number of files moved to ensure the limit
         count = 0
         for file in os.listdir(parent_directory):
             if file.endswith('.' + filetype):
                 if limit is not None and count >= limit:
-                    break  # Stop if we hit the limit
+                    break  
+                    
                 file_path = os.path.join(parent_directory, file)
                 new_file_path = os.path.join(target_dir, file)
                 os.rename(file_path, new_file_path)
@@ -65,16 +67,17 @@ def sort_files(parent_directory, filetype_limits):
 
 def rename_files(parent_directory, file_types, use_custom_name=False, custom_name="File"):
     for filetype, files in file_types.items():
-        target_dir = parent_directory  # Use the parent directory directly
+        target_dir = parent_directory  
 
-        count = {}  # Dictionary to track counts of each new filename to avoid collisions
+        # Dictionary to track counts of each new filename to avoid conflicts
+        count = {}  
 
         for file in files:
-            file_path = os.path.join(parent_directory, file)  # Ensure correct path
+            file_path = os.path.join(parent_directory, file) 
             if not os.path.isfile(file_path):
                 continue  # Skip if it's not a file
 
-            # Get creation time and prepare new file name
+            # Get creation time and prepare new file name (in the case that there's no custom name the ctime will be used instead)
             ctime = os.path.getctime(file_path)
             date_str = datetime.datetime.fromtimestamp(ctime).strftime("%Y%m%d")
 
@@ -83,12 +86,12 @@ def rename_files(parent_directory, file_types, use_custom_name=False, custom_nam
             else:
                 name_prefix = date_str
 
-            # Generate the new file name, ensure uniqueness by appending a counter if needed
+            # Generate the new file name
             base_new_name = f"{name_prefix}"
             new_file_name = f"{base_new_name}_{count.get(base_new_name, 0)}.{filetype}"
             new_file_path = os.path.join(target_dir, new_file_name)
 
-            # Ensure we don't overwrite existing files
+            # Make sure we don't overwrite existing files
             while os.path.exists(new_file_path):
                 count[base_new_name] = count.get(base_new_name, 0) + 1
                 new_file_name = f"{base_new_name}_{count[base_new_name]}.{filetype}"
@@ -117,8 +120,7 @@ def change_file_type(parent_directory, old_filetype, new_filetype, limit=None):
             os.rename(old_file_path, new_file_path)
             print(f"Changed file type of {file} to {new_file_name}")
             count += 1
-
-    # Informative print if no files were found
+            
     if count == 0:
         print(f"No files with the .{old_filetype} extension found in {parent_directory}")
 
